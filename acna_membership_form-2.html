@@ -339,34 +339,44 @@
 </div>
 
 <script>
-  let cur=0;
-  document.querySelectorAll('.chip').forEach(c=>{
-    const inp=c.querySelector('input');
-    c.addEventListener('click',function(){
-      if(inp.type==='radio'){
-        document.querySelectorAll('.chip input[name="'+inp.name+'"]').forEach(r=>r.closest('.chip').classList.remove('sel'));
-        this.classList.add('sel');
-      } else {
-        this.classList.toggle('sel');
-        inp.checked=this.classList.contains('sel');
+  let cur = 0;
+
+  // 1. Fix the Option "Chips" (Resolves the double-click bubbling issue)
+  document.querySelectorAll('.chip input').forEach(inp => {
+    inp.addEventListener('change', function() {
+      if (this.type === 'radio') {
+        // Unselect all other chips in the same radio group
+        document.querySelectorAll('.chip input[name="' + this.name + '"]').forEach(r => {
+          r.closest('.chip').classList.remove('sel');
+        });
+        // Select the chosen one
+        if (this.checked) this.closest('.chip').classList.add('sel');
+      } else if (this.type === 'checkbox') {
+        // Toggle the checkbox visually
+        this.closest('.chip').classList.toggle('sel', this.checked);
       }
     });
   });
-  function toggleSubmit(){
-    document.getElementById('submit-btn').disabled=!document.getElementById('decl-check').checked;
+
+  // 2. Submit Button Toggle
+  function toggleSubmit() {
+    document.getElementById('submit-btn').disabled = !document.getElementById('decl-check').checked;
   }
-  function goTo(n){
-    document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));
-    document.querySelectorAll('.stab').forEach((t,i)=>{
-      t.classList.remove('active','done');
-      if(i===n)t.classList.add('active');
-      else if(i<n)t.classList.add('done');
+
+  // 3. Form Navigation
+  function goTo(n) {
+    document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i === n));
+    document.querySelectorAll('.stab').forEach((t, i) => {
+      t.classList.remove('active', 'done');
+      if (i === n) t.classList.add('active');
+      else if (i < n) t.classList.add('done');
     });
-    cur=n;
-    window.scrollTo({top:0,behavior:'smooth'});
+    cur = n;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  function nextPage(){if(cur<5)goTo(cur+1);}
-  function prevPage(){if(cur>0)goTo(cur-1);}
+
+  function nextPage() { if (cur < 5) goTo(cur + 1); }
+  function prevPage() { if (cur > 0) goTo(cur - 1); }
 </script>
 </body>
 </html>
