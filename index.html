@@ -134,6 +134,19 @@
   .sub-btn:hover:not(:disabled){background:var(--gm)}
   .sub-btn:disabled{background:#aaa;cursor:not-allowed}
   .page{display:none}.page.active{display:block}
+  .brand-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: .5px solid var(--bds);
+  }
+  .blend-logo {
+    height: 45px;
+    width: auto;
+    mix-blend-mode: multiply; /* Removes the white background */
+    display: inline-block;
+    opacity: 0.8;
+  }
   @media(max-width:520px){
     .value-grid{grid-template-columns:1fr}
     .vc-wide{grid-column:1}
@@ -351,6 +364,11 @@
     <p style="font-size:12px;color:var(--ts);text-align:center;margin-top:1rem;line-height:1.6">Your application will be reviewed by the ACNA Management Committee within 6 weeks. All information is held in confidence and used only for membership assessment.</p>
   </div>
   </form>
+  <div class="brand-footer">
+    <img src="./IMG_1046.JPG" alt="ACNA Logo" class="blend-logo" />
+  </div>
+
+</div>
 </div>
 
 <script>
