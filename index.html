@@ -9,9 +9,9 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap');
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#f5f7f6;min-height:100vh;padding:2rem 1rem}
+  body{background:#ffffff;min-height:100vh;padding:2rem 1rem}
   :root{
-    --g:#0F6E56;--gm:#1D9E75;--gl:#E1F5EE;--gd:#085041;
+    --g:#704D36;--gm:#8E6548;--gl:#F8F4F1;--gd:#473021;
     --al:#FAEEDA;
     --tp:#1a1a1a;--ts:#6b7280;
     --bd:#e5e7eb;--bds:#d1d5db;
@@ -68,6 +68,16 @@
   .elig-box ul li{font-size:12.5px;color:rgba(255,255,255,.85);padding:3px 0 3px 1.25rem;position:relative;line-height:1.6}
   .elig-box ul li::before{content:'✓';position:absolute;left:0;color:#9FE1CB;font-size:11px;top:4px}
   .elig-box ul li.excl::before{content:'✕';color:#FFA07A}
+  /* NEW BENEFITS SECTION CSS */
+  .benefits-label{color:rgba(255,255,255,.7);font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.875rem;margin-top:1.25rem}
+  .benefits-grid{display:grid;grid-template-columns:1fr 1fr;gap:.625rem;margin-bottom:.875rem}
+  .benefit-card{background:rgba(255,255,255,.1);border-radius:10px;padding:.875rem 1rem;display:flex;gap:.75rem;align-items:flex-start}
+  .benefit-card.full{grid-column:1/-1;background:rgba(255,255,255,.15);border:.5px solid rgba(255,255,255,.25)}
+  .bc-icon{flex-shrink:0;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;margin-top:1px}
+  .bc-text h4{color:#fff;font-size:12.5px;font-weight:500;margin-bottom:.2rem;line-height:1.4}
+  .bc-text p{color:rgba(255,255,255,.75);font-size:11.5px;line-height:1.6}
+  .movement-close{margin-top:.875rem;background:rgba(255,255,255,.1);border-radius:8px;padding:.75rem 1rem;border-left:3px solid rgba(255,255,255,.5)}
+  .movement-close p{color:#fff;font-size:13px;line-height:1.7;font-style:italic}
   .pbar{display:flex;border-radius:10px;border:.5px solid var(--bd);background:var(--bg);margin-bottom:1.75rem;overflow:hidden}
   .stab{flex:1;text-align:center;padding:.55rem .25rem;font-size:11px;font-weight:500;color:var(--ts);cursor:pointer;border-right:.5px solid var(--bd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s,color .15s}
   .stab:last-child{border-right:none}
@@ -76,16 +86,16 @@
   .sc{background:var(--bg);border:.5px solid var(--bd);border-radius:var(--r);padding:1.5rem;margin-bottom:1.25rem}
   .sl{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:.5px solid var(--bd)}
   .si{width:22px;height:22px;border-radius:6px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:13px}
-  .info-band{background:var(--gl);border:.5px solid rgba(15,110,86,.25);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:12.5px;color:var(--gd);line-height:1.65}
+  .info-band{background:var(--gl);border:.5px solid rgba(112,77,54,.25);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:12.5px;color:var(--gd);line-height:1.65}
   .info-band strong{font-weight:500}
-  .why-block{background:var(--gl);border:.5px solid rgba(15,110,86,.3);border-left:3px solid var(--g);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
+  .why-block{background:var(--gl);border:.5px solid rgba(112,77,54,.3);border-left:3px solid var(--g);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
   .why-block .why-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--g);margin-bottom:.5rem}
   .why-block p{font-size:13px;color:var(--gd);line-height:1.75}
   .highlight-band{background:var(--bg);border:.5px solid var(--bd);border-left:3px solid var(--gm);border-radius:8px;padding:.875rem 1rem;margin-bottom:1rem}
   .highlight-band .hb-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--gm);margin-bottom:.5rem}
   .highlight-band p{font-size:12.5px;color:var(--ts);line-height:1.65}
   .complex-band{background:var(--bg);border:.5px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:1rem}
-  .complex-band .cb-top{background:var(--gl);padding:.75rem 1rem;font-size:12.5px;color:var(--gd);line-height:1.65;border-bottom:.5px solid rgba(15,110,86,.2)}
+  .complex-band .cb-top{background:var(--gl);padding:.75rem 1rem;font-size:12.5px;color:var(--gd);line-height:1.65;border-bottom:.5px solid rgba(112,77,54,.2)}
   .complex-band .cb-top strong{font-weight:500}
   .complex-band .cb-bot{padding:.75rem 1rem;font-size:12.5px;color:var(--ts);line-height:1.65}
   .cocreate-band{background:var(--bg);border:.5px solid var(--bd);border-radius:10px;padding:1.125rem 1.25rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
@@ -101,12 +111,12 @@
   .auth-block .auth-icon{width:32px;height:32px;border-radius:8px;background:var(--gd);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0}
   .auth-block .auth-title{font-size:13px;font-weight:500;color:var(--gd)}
   .auth-block .auth-title span{display:block;font-size:12px;font-weight:400;color:var(--ts);margin-top:2px}
-  .declaration-box{background:var(--gl);border:.5px solid rgba(15,110,86,.3);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
+  .declaration-box{background:var(--gl);border:.5px solid rgba(112,77,54,.3);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
   .declaration-box p{font-size:13px;color:var(--gd);line-height:1.75}
   .declaration-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-top:.875rem}
   .declaration-check input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--g);flex-shrink:0;cursor:pointer}
   .declaration-check span{font-size:13px;color:var(--gd);font-weight:500;line-height:1.6}
-  .declaration-check span em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(15,110,86,.4)}
+  .declaration-check span em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(112,77,54,.4)}
   .fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
   .fr.s{grid-template-columns:1fr}
   .f{display:flex;flex-direction:column;gap:5px}
@@ -148,6 +158,8 @@
     opacity: 0.8;
   }
   @media(max-width:520px){
+    .benefits-grid{grid-template-columns:1fr}
+    .benefit-card.full{grid-column:1}
     .value-grid{grid-template-columns:1fr}
     .vc-wide{grid-column:1}
     .fr{grid-template-columns:1fr}
@@ -182,31 +194,78 @@
       </ul>
     </div>
     <div class="divider"></div>
-    <p class="value-heading">What membership means for your Network</p>
-    <div class="value-grid">
-      <div class="vc family vc-wide">
-        <div class="vc-icon"><i class="ti ti-home-heart"></i></div>
-        <h3>A real family — across the continent</h3>
-        <p>For many of us, the search for family and belonging did not end when we left care. ACNA is that family, a continental home where care-experienced people find each other, recognise each other, and build something together that is entirely ours. Not a programme. Not a project. A family that understands where you come from, believes in where you are going, and walks with you.</p>
-      </div>
-      <div class="vc"><div class="vc-icon"><i class="ti ti-network"></i></div><h3>Peer networking forum</h3><p>Connect with care-experienced Networks across Africa. Share strategies and learn from each other; peer to peer, as equals, at the continental level.</p></div>
-      <div class="vc"><div class="vc-icon"><i class="ti ti-shield-check"></i></div><h3>An independent safe space</h3><p>A space owned entirely by care-experienced people to speak openly, share challenges, celebrate wins, and define for ourselves what support truly looks like.</p></div>
-      <div class="vc"><div class="vc-icon"><i class="ti ti-coin"></i></div><h3>Collective resource mobilisation</h3><p>We partner with member Networks to co-design funding proposals and raise resources together — on our terms, with no power imbalance and no strings attached.</p></div>
-      <div class="vc"><div class="vc-icon"><i class="ti ti-speakerphone"></i></div><h3>A unified continental voice</h3><p>Speak as one movement — coordinated, collective, and impossible to ignore. No more isolated Networks navigating the same challenges alone.</p></div>
-      <div class="vc au vc-wide">
-        <div class="au-inner">
-          <div class="au-icon-wrap"><i class="ti ti-world"></i></div>
-          <div class="au-text">
-            <h3>Collective engagement with regional &amp; global mechanisms</h3>
-            <p>As an ACNA member, your Network gains access to a structured, coordinated platform for collectively engaging the institutions and processes that shape care policy at every level. Rather than each Network navigating these spaces alone, ACNA brings care-experienced voices into these rooms together, with a shared agenda and a recognised identity.</p>
-            <div class="au-mechanisms">
-              <span class="au-tag">African Union</span><span class="au-tag">ECOWAS</span><span class="au-tag">SADC</span><span class="au-tag">EAC</span><span class="au-tag">IGAD</span><span class="au-tag">UN Committee on the Rights of the Child</span><span class="au-tag">UN Special Rapporteurs</span><span class="au-tag">SDG Processes</span><span class="au-tag">Global Partnership to End Violence</span>
-            </div>
-          </div>
+    <p class="benefits-label">Benefits of becoming an ACNA member Network</p>
+    <div class="benefits-grid">
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-speakerphone"></i></div>
+        <div class="bc-text">
+          <h4>Collective advocacy</h4>
+          <p>Strengthen advocacy through regional and continental efforts that influence policies affecting care leavers.</p>
         </div>
       </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-arrows-join"></i></div>
+        <div class="bc-text">
+          <h4>Coordinated collective impact</h4>
+          <p>A structured platform to work together, exchange learning, align priorities, and avoid working in silos — stronger advocacy, greater visibility, more sustainable impact.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-school"></i></div>
+        <div class="bc-text">
+          <h4>Learning &amp; capacity building</h4>
+          <p>Access trainings, webinars, peer exchanges, and leadership development initiatives.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-handshake"></i></div>
+        <div class="bc-text">
+          <h4>Partnerships &amp; collaborations</h4>
+          <p>Build connections with care leaver Networks, civil society organisations, researchers, and stakeholders across Africa and globally.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-eye"></i></div>
+        <div class="bc-text">
+          <h4>Visibility &amp; representation</h4>
+          <p>Participate in conferences, dialogues, campaigns, and strategic forums that amplify the care-leaver voice.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-bulb"></i></div>
+        <div class="bc-text">
+          <h4>Knowledge sharing</h4>
+          <p>Share experiences and promising practices with a diverse community of care-experienced leaders, developmental actors, and a diverse group of actors across the continent and globally.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="bc-icon"><i class="ti ti-coin"></i></div>
+        <div class="bc-text">
+          <h4>Joint initiatives &amp; resource mobilisation</h4>
+          <p>Access opportunities for joint initiatives and resource mobilisation — where appropriate — to strengthen impact and sustainability.</p>
+        </div>
+      </div>
+
+      <div class="benefit-card full">
+        <div class="bc-icon"><i class="ti ti-hearts"></i></div>
+        <div class="bc-text">
+          <h4>A community of solidarity and support</h4>
+          <p>Belong to a community rooted in lived experience and a shared commitment to ensuring care leavers thrive — a place where you are recognised, and where what we build together belongs to all of us.</p>
+        </div>
+      </div>
+
     </div>
-    <p class="vp-note"><strong>On resources:</strong> ACNA is not a donor and does not fund Networks individually. What we offer is more powerful — a platform to <strong>partner in raising resources together</strong>, so that no Network has to navigate that road alone or on terms set by others.</p>
+
+    <div class="movement-close">
+      <p>Membership in ACNA is more than joining a network — it is becoming part of a movement that is building a stronger, united, and care-leaver-led future for Africa.</p>
+    </div>
   </div>
 
   <div class="pbar">
