@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ACNA Membership Application</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f5f7f6;min-height:100vh;padding:2rem 1rem}
+  :root{
+    --g:#0F6E56;--gm:#1D9E75;--gl:#E1F5EE;--gd:#085041;
+    --al:#FAEEDA;
+    --tp:#1a1a1a;--ts:#6b7280;
+    --bd:#e5e7eb;--bds:#d1d5db;
+    --bg:#ffffff;--bgs:#f9fafb;
+    --r:10px;
+  }
+  .fs{font-family:'DM Sans',sans-serif;max-width:680px;margin:0 auto;padding:0 0 3rem}
+  .fh{background:var(--g);border-radius:14px;padding:2rem 2rem 1.75rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+  .fh::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,0.05)}
+  .fh::after{content:'';position:absolute;bottom:-40px;left:40px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,0.04)}
+  .hbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);color:#fff;font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:1rem}
+  .fh h1{font-family:'Playfair Display',serif;color:#fff;font-size:26px;font-weight:600;line-height:1.3;margin-bottom:.75rem}
+  .fh .sub{color:rgba(255,255,255,.85);font-size:14px;line-height:1.8;margin-bottom:1rem}
+  .fh .notice{color:rgba(255,255,255,.9);font-size:13px;background:rgba(255,255,255,.1);border-radius:8px;padding:.625rem .875rem;margin-bottom:1.25rem}
+  .identity-strip{background:rgba(255,255,255,.12);border-radius:10px;padding:1rem 1.125rem;margin-bottom:1.25rem;border-left:3px solid rgba(255,255,255,.4)}
+  .identity-strip p{color:#fff;font-size:13.5px;line-height:1.75}
+  .identity-strip p em{color:rgba(255,255,255,.75);font-style:normal}
+  .divider{height:.5px;background:rgba(255,255,255,.15);margin:1.25rem 0}
+  .value-heading{color:rgba(255,255,255,.7);font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.875rem}
+  .value-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .vc{background:rgba(255,255,255,.1);border-radius:10px;padding:.875rem 1rem}
+  .vc.au{background:rgba(255,255,255,.17);border:.5px solid rgba(255,255,255,.25)}
+  .vc.family{background:rgba(255,255,255,.15);border:.5px solid rgba(255,255,255,.3)}
+  .vc-wide{grid-column:1/-1}
+  .vc-icon{font-size:18px;color:rgba(255,255,255,.65);margin-bottom:.4rem}
+  .vc.family .vc-icon{color:rgba(255,255,255,.9);font-size:22px}
+  .vc h3{color:#fff;font-size:13px;font-weight:500;margin-bottom:.25rem}
+  .vc.family h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600}
+  .vc p{color:rgba(255,255,255,.75);font-size:12px;line-height:1.6}
+  .vc.family p{color:rgba(255,255,255,.88);font-size:12.5px;line-height:1.7}
+  .vc.au p{color:rgba(255,255,255,.85)}
+  .au-inner{display:flex;gap:.875rem;align-items:flex-start}
+  .au-icon-wrap{flex-shrink:0;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff}
+  .au-mechanisms{display:flex;flex-wrap:wrap;gap:6px;margin-top:.625rem}
+  .au-tag{background:rgba(255,255,255,.15);border-radius:20px;padding:3px 9px;font-size:11px;color:rgba(255,255,255,.9);font-weight:500}
+  .vp-note{margin-top:.875rem;font-size:12.5px;color:rgba(255,255,255,.75);line-height:1.7;border-top:.5px solid rgba(255,255,255,.15);padding-top:.875rem}
+  .vp-note strong{color:#fff;font-weight:500}
+  .elig-box{background:rgba(255,255,255,.08);border-radius:10px;padding:1rem 1.125rem;margin-top:.25rem}
+  .elig-box p{color:rgba(255,255,255,.75);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.625rem}
+  .elig-box ul{list-style:none}
+  .elig-box ul li{font-size:12.5px;color:rgba(255,255,255,.85);padding:3px 0 3px 1.25rem;position:relative;line-height:1.6}
+  .elig-box ul li::before{content:'✓';position:absolute;left:0;color:#9FE1CB;font-size:11px;top:4px}
+  .elig-box ul li.excl::before{content:'✕';color:#FFA07A}
+  .pbar{display:flex;border-radius:10px;border:.5px solid var(--bd);background:var(--bg);margin-bottom:1.75rem;overflow:hidden}
+  .stab{flex:1;text-align:center;padding:.55rem .25rem;font-size:11px;font-weight:500;color:var(--ts);cursor:pointer;border-right:.5px solid var(--bd);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s,color .15s}
+  .stab:last-child{border-right:none}
+  .stab.active{background:var(--gd);color:#fff}
+  .stab.done{background:var(--gl);color:var(--gd)}
+  .sc{background:var(--bg);border:.5px solid var(--bd);border-radius:var(--r);padding:1.5rem;margin-bottom:1.25rem}
+  .sl{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--g);margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:.5px solid var(--bd)}
+  .si{width:22px;height:22px;border-radius:6px;background:var(--gl);display:flex;align-items:center;justify-content:center;font-size:13px}
+  .info-band{background:var(--gl);border:.5px solid rgba(15,110,86,.25);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:12.5px;color:var(--gd);line-height:1.65}
+  .info-band strong{font-weight:500}
+  .why-block{background:var(--gl);border:.5px solid rgba(15,110,86,.3);border-left:3px solid var(--g);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
+  .why-block .why-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--g);margin-bottom:.5rem}
+  .why-block p{font-size:13px;color:var(--gd);line-height:1.75}
+  .highlight-band{background:var(--bg);border:.5px solid var(--bd);border-left:3px solid var(--gm);border-radius:8px;padding:.875rem 1rem;margin-bottom:1rem}
+  .highlight-band .hb-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--gm);margin-bottom:.5rem}
+  .highlight-band p{font-size:12.5px;color:var(--ts);line-height:1.65}
+  .complex-band{background:var(--bg);border:.5px solid var(--bd);border-radius:8px;overflow:hidden;margin-bottom:1rem}
+  .complex-band .cb-top{background:var(--gl);padding:.75rem 1rem;font-size:12.5px;color:var(--gd);line-height:1.65;border-bottom:.5px solid rgba(15,110,86,.2)}
+  .complex-band .cb-top strong{font-weight:500}
+  .complex-band .cb-bot{padding:.75rem 1rem;font-size:12.5px;color:var(--ts);line-height:1.65}
+  .cocreate-band{background:var(--bg);border:.5px solid var(--bd);border-radius:10px;padding:1.125rem 1.25rem;margin-bottom:1.25rem;position:relative;overflow:hidden}
+  .cocreate-band::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,var(--g),var(--gm))}
+  .cocreate-band .cc-label{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.07em;color:var(--gm);margin-bottom:.5rem;padding-left:.25rem}
+  .cocreate-band p{font-size:13px;color:var(--tp);line-height:1.75;padding-left:.25rem}
+  .cocreate-band p em{color:var(--gm);font-style:normal;font-weight:500}
+  .trans-block{background:var(--al);border:.5px solid #EF9F27;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem}
+  .trans-block h4{font-size:13px;font-weight:500;color:#633806;margin-bottom:.4rem;display:flex;align-items:center;gap:6px}
+  .trans-block p{font-size:12.5px;color:#633806;line-height:1.65}
+  .auth-block{background:var(--bg);border:1.5px solid var(--gd);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem}
+  .auth-block .auth-header{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:.875rem;border-bottom:.5px solid var(--bd)}
+  .auth-block .auth-icon{width:32px;height:32px;border-radius:8px;background:var(--gd);display:flex;align-items:center;justify-content:center;font-size:16px;color:#fff;flex-shrink:0}
+  .auth-block .auth-title{font-size:13px;font-weight:500;color:var(--gd)}
+  .auth-block .auth-title span{display:block;font-size:12px;font-weight:400;color:var(--ts);margin-top:2px}
+  .declaration-box{background:var(--gl);border:.5px solid rgba(15,110,86,.3);border-radius:8px;padding:1rem 1.125rem;margin-bottom:1rem}
+  .declaration-box p{font-size:13px;color:var(--gd);line-height:1.75}
+  .declaration-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;margin-top:.875rem}
+  .declaration-check input[type=checkbox]{width:16px;height:16px;margin-top:2px;accent-color:var(--g);flex-shrink:0;cursor:pointer}
+  .declaration-check span{font-size:13px;color:var(--gd);font-weight:500;line-height:1.6}
+  .declaration-check span em{font-style:normal;text-decoration:underline;text-decoration-color:rgba(15,110,86,.4)}
+  .fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+  .fr.s{grid-template-columns:1fr}
+  .f{display:flex;flex-direction:column;gap:5px}
+  .f label{font-size:13px;font-weight:500;color:var(--tp)}
+  .f label .req{color:#D85A30;margin-left:2px}
+  .f input,.f select,.f textarea{font-family:'DM Sans',sans-serif;font-size:14px;padding:9px 12px;border:.5px solid var(--bds);border-radius:8px;background:var(--bgs);color:var(--tp);outline:none;transition:border-color .15s;width:100%}
+  .f input:focus,.f select:focus,.f textarea:focus{border-color:var(--gm)}
+  .f textarea{resize:vertical;min-height:80px;line-height:1.6}
+  .f .hint{font-size:11.5px;color:var(--ts);line-height:1.5;margin-top:2px}
+  .rg{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+  .chip{display:flex;align-items:center;gap:6px;padding:6px 12px;border:.5px solid var(--bds);border-radius:20px;font-size:13px;cursor:pointer;background:var(--bgs);color:var(--tp);transition:all .12s;user-select:none}
+  .chip input{display:none}
+  .chip:hover{border-color:var(--gm)}
+  .chip.sel{background:var(--gl);border-color:var(--gm);color:var(--gd);font-weight:500}
+  .nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.5rem;gap:1rem}
+  .btn{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;padding:10px 24px;border-radius:8px;cursor:pointer;border:none;transition:all .15s}
+  .btnp{background:var(--g);color:#fff}.btnp:hover{background:var(--gm)}
+  .btns{background:transparent;color:var(--ts);border:.5px solid var(--bd)}.btns:hover{background:var(--bgs)}
+  .pi{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ts)}
+  .dots{display:flex;gap:4px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--bd);transition:background .2s}
+  .dot.active{background:var(--g)}
+  .dot.done{background:var(--gl);border:1.5px solid var(--gm)}
+  .sub-btn{width:100%;padding:14px;font-size:15px;border-radius:10px;background:var(--g);color:#fff;font-family:'DM Sans',sans-serif;font-weight:500;border:none;cursor:pointer;margin-top:.5rem;transition:background .15s}
+  .sub-btn:hover:not(:disabled){background:var(--gm)}
+  .sub-btn:disabled{background:#aaa;cursor:not-allowed}
+  .page{display:none}.page.active{display:block}
+  @media(max-width:520px){
+    .value-grid{grid-template-columns:1fr}
+    .vc-wide{grid-column:1}
+    .fr{grid-template-columns:1fr}
+    .pbar .stab{font-size:10px;padding:.45rem .15rem}
+  }
+</style>
+</head>
+<body>
+<div class="fs">
+  <form action="https://formbold.com/s/obvx8" method="POST" enctype="multipart/form-data">
+  <div class="fh">
+    <div class="hbadge"><i class="ti ti-leaf"></i> Africa Care Network Alliance</div>
+    <h1>Membership Application</h1>
+    <div class="identity-strip">
+      <p>ACNA is not a coalition of organisations that work <em>on behalf of</em> care-experienced people. We are care-experienced people — organising ourselves, defining our own agenda, and building power from within. Every member Network in ACNA is led by the community it serves.</p>
+    </div>
+    <p class="sub">Karibu sana! ACNA is a continental movement by and for care leavers across Africa. Our collective strength comes from Networks that are rooted in lived experience — where those who grew up in care hold the authority, set the direction, and own the outcomes.</p>
+    <div class="notice"><i class="ti ti-info-circle"></i> <strong>For Networks and Organizations only.</strong> Applications should be made by an executive with decision-making authority and <strong>prior approval from your governing body</strong>. The ACNA Management Committee reviews all applications within <strong>6 weeks</strong>.</div>
+    <div class="elig-box">
+      <p>To be eligible, your Network must</p>
+      <ul>
+        <li>Be led by care-experienced people — more than half of your leadership must have lived experience of care</li>
+        <li>Bring together care leavers from <strong>different homes, institutions, or care backgrounds</strong> — not a single placement or facility</li>
+        <li>Ensure leadership itself reflects diversity across different care backgrounds — no single home or institution should dominate</li>
+        <li>Exist to serve and empower care leavers, led by their voices — not on their behalf</li>
+        <li>Be independent of political parties and free from control by external institutions or donors</li>
+        <li>Ensure that no external organisation holds a decision-making position within your leadership</li>
+        <li>Have governing body approval before submitting this application</li>
+        <li>Be committed to a unified, care-leaver-led voice for Africa</li>
+        <li class="excl">Alumni groups — care leavers from the same home or institution coming together — do not qualify as member Networks. ACNA is a movement of Networks, not a gathering of alumni.</li>
+      </ul>
+    </div>
+    <div class="divider"></div>
+    <p class="value-heading">What membership means for your Network</p>
+    <div class="value-grid">
+      <div class="vc family vc-wide">
+        <div class="vc-icon"><i class="ti ti-home-heart"></i></div>
+        <h3>A real family — across the continent</h3>
+        <p>For many of us, the search for family and belonging did not end when we left care. ACNA is that family — a continental home where care-experienced people find each other, recognise each other, and build something together that is entirely ours. Not a programme. Not a project. A family that understands where you come from, believes in where you are going, and walks with you.</p>
+      </div>
+      <div class="vc"><div class="vc-icon"><i class="ti ti-network"></i></div><h3>Peer networking forum</h3><p>Connect with care-experienced Networks across Africa. Share strategies and learn from each other — peer to peer, as equals, at the continental level.</p></div>
+      <div class="vc"><div class="vc-icon"><i class="ti ti-shield-check"></i></div><h3>An independent safe space</h3><p>A space owned entirely by care-experienced people — to speak openly, share challenges, celebrate wins, and define for ourselves what support truly looks like.</p></div>
+      <div class="vc"><div class="vc-icon"><i class="ti ti-coin"></i></div><h3>Collective resource mobilisation</h3><p>We partner with member Networks to co-design funding proposals and raise resources together — on our terms, with no power imbalance and no strings attached.</p></div>
+      <div class="vc"><div class="vc-icon"><i class="ti ti-speakerphone"></i></div><h3>A unified continental voice</h3><p>Speak as one movement — coordinated, collective, and impossible to ignore. No more isolated Networks navigating the same challenges alone.</p></div>
+      <div class="vc au vc-wide">
+        <div class="au-inner">
+          <div class="au-icon-wrap"><i class="ti ti-world"></i></div>
+          <div class="au-text">
+            <h3>Collective engagement with regional &amp; global mechanisms</h3>
+            <p>As an ACNA member, your Network gains access to a structured, coordinated platform for collectively engaging the institutions and processes that shape care policy — at every level. Rather than each Network navigating these spaces alone, ACNA brings care-experienced voices into these rooms together, with a shared agenda and a recognised identity.</p>
+            <div class="au-mechanisms">
+              <span class="au-tag">African Union</span><span class="au-tag">ECOWAS</span><span class="au-tag">SADC</span><span class="au-tag">EAC</span><span class="au-tag">IGAD</span><span class="au-tag">UN Committee on the Rights of the Child</span><span class="au-tag">UN Special Rapporteurs</span><span class="au-tag">SDG Processes</span><span class="au-tag">Global Partnership to End Violence</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="vp-note"><strong>On resources:</strong> ACNA is not a donor and does not fund Networks individually. What we offer is more powerful — a platform to <strong>partner in raising resources together</strong>, so that no Network has to navigate that road alone or on terms set by others.</p>
+  </div>
+
+  <div class="pbar">
+    <div class="stab active" onclick="goTo(0)">Personal</div>
+    <div class="stab" onclick="goTo(1)">Network</div>
+    <div class="stab" onclick="goTo(2)">Leadership</div>
+    <div class="stab" onclick="goTo(3)">Mission</div>
+    <div class="stab" onclick="goTo(4)">Transparency</div>
+    <div class="stab" onclick="goTo(5)">Join ACNA</div>
+  </div>
+
+  <div class="page active" id="page-0">
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-user"></i></div> About you</div>
+      <div class="fr"><div class="f"><label>Full name<span class="req">*</span></label><input type="text" name="full_name" placeholder="First and last name"/></div><div class="f"><label>Email address<span class="req">*</span></label><input type="email" name="email" placeholder="your@email.com"/></div></div>
+      <div class="fr"><div class="f"><label>Phone number<span class="req">*</span></label><input type="tel" name="phone" placeholder="+254 ..."/></div><div class="f"><label>Preferred language<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="lang" value="en"/>English</label><label class="chip"><input type="radio" name="lang" value="sw"/>Kiswahili</label><label class="chip"><input type="radio" name="lang" value="fr"/>French</label><label class="chip"><input type="radio" name="lang" value="ar"/>Arabic</label></div></div></div>
+      <div class="fr"><div class="f"><label>Age range<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="age" value="20-25"/>20–25</label><label class="chip"><input type="radio" name="age" value="25-30"/>25–30</label><label class="chip"><input type="radio" name="age" value="30-35"/>30–35</label><label class="chip"><input type="radio" name="age" value="35+"/>35+</label></div></div><div class="f"><label>Professional background<span class="req">*</span></label><input type="text" name="professional_background" placeholder="e.g. Social work, Advocacy, Law..."/></div></div>
+      <div class="fr s"><div class="f"><label>Your role within the Network<span class="req">*</span></label><input type="text" name="network_role" placeholder="e.g. Executive Director, Chairperson..."/></div></div>
+      <div class="fr s"><div class="f"><label>Are you care-experienced?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="applicantce" value="yes"/>Yes</label><label class="chip"><input type="radio" name="applicantce" value="no"/>No</label><label class="chip"><input type="radio" name="applicantce" value="prefer"/>Prefer not to say</label></div><span class="hint">ACNA is a movement led by care-experienced people. This helps us understand who is applying on behalf of the Network.</span></div></div>
+    </div>
+    <div class="nav"><div class="pi"><div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span>Step 1 of 6</span></div><button type="button" class="btn btnp" onclick="nextPage()">Continue <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+
+  <div class="page" id="page-1">
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-building-community"></i></div> Your Network</div>
+      <div class="fr"><div class="f"><label>Network / Organization name<span class="req">*</span></label><input type="text" name="network_name" placeholder="Full official name"/></div><div class="f"><label>Country of establishment<span class="req">*</span></label><input type="text" name="country_of_establishment" placeholder="Country"/></div></div>
+      <div class="fr"><div class="f"><label>Year of establishment</label><input type="number" name="year_established" placeholder="e.g. 2018" min="1900" max="2026"/></div><div class="f"><label>Registration status<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="reg" value="ngo"/>NGO</label><label class="chip"><input type="radio" name="reg" value="cbo"/>CBO</label><label class="chip"><input type="radio" name="reg" value="awaiting"/>Awaiting certificate</label><label class="chip"><input type="radio" name="reg" value="none"/>Not yet registered</label></div></div></div>
+      <div class="fr s"><div class="f"><label>Why was your Network founded?<span class="req">*</span></label><textarea name="founded_reason" placeholder="What motivated you to start this Network? What gap did you see?"></textarea></div></div>
+      <div class="highlight-band"><div class="hb-label"><i class="ti ti-info-circle"></i> About membership diversity</div><p>ACNA member Networks must bring together care leavers from <strong>different homes, institutions, or care backgrounds</strong>. Groups formed exclusively by alumni of the same home or institution — however valuable their work — do not meet the criteria for ACNA membership.</p></div>
+      <div class="fr s"><div class="f"><label>Do members of your Network come from different homes, institutions, or care backgrounds?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="diversity" value="yes"/>Yes — our members come from a range of different backgrounds</label><label class="chip"><input type="radio" name="diversity" value="mostly"/>Mostly — with some concentration</label><label class="chip"><input type="radio" name="diversity" value="no"/>No — most members share the same home or institution</label></div><span class="hint">If your Network began as an alumni group and has since grown, please describe that journey below.</span></div></div>
+      <div class="fr s"><div class="f"><label>Please describe the diversity of care backgrounds within your Network's membership<span class="req">*</span></label><textarea name="diversity_description" placeholder="What types of care settings are represented? How did your Network grow to include care leavers from different backgrounds?"></textarea></div></div>
+    </div>
+    <div class="nav"><button type="button" class="btn btns" onclick="prevPage()"><i class="ti ti-arrow-left"></i> Back</button><div class="pi"><div class="dots"><div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span>Step 2 of 6</span></div><button type="button" class="btn btnp" onclick="nextPage()">Continue <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+
+  <div class="page" id="page-2">
+    <div class="info-band"><strong>Why this matters to ACNA:</strong> What makes our collective distinct is that lived experience of care is not just welcomed — it is the foundation of leadership. These questions help us understand how your Network is structured and who holds power within it.</div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-users"></i></div> Leadership composition</div>
+      <div class="fr s"><div class="f"><label>What proportion of your Network's current leadership and decision-makers are care-experienced?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="ceprop" value="all"/>All of them</label><label class="chip"><input type="radio" name="ceprop" value="majority"/>More than half</label><label class="chip"><input type="radio" name="ceprop" value="half"/>About half</label><label class="chip"><input type="radio" name="ceprop" value="some"/>Less than half</label></div><span class="hint">ACNA requires that more than half of a Network's leadership be care-experienced.</span></div></div>
+      <div class="fr s"><div class="f"><label>What types of care experience are represented across your current leadership?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="checkbox" name="leadcaretype" value="institutional"/>Institutional care</label><label class="chip"><input type="checkbox" name="leadcaretype" value="kinship"/>Kinship care</label><label class="chip"><input type="checkbox" name="leadcaretype" value="adoption"/>Adoption</label><label class="chip"><input type="checkbox" name="leadcaretype" value="kafaala"/>Kafaala</label><label class="chip"><input type="checkbox" name="leadcaretype" value="street"/>Street-connected families</label><label class="chip"><input type="checkbox" name="leadcaretype" value="foster"/>Foster care</label><label class="chip"><input type="checkbox" name="leadcaretype" value="other"/>Other</label></div></div></div>
+      <div class="fr s"><div class="f"><label>Do members of your leadership come from different homes or institutions?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="leadhomes" value="diverse"/>Leadership is drawn from a range of different homes and backgrounds</label><label class="chip"><input type="radio" name="leadhomes" value="mixed"/>Mixed — some diversity, but with some concentration</label><label class="chip"><input type="radio" name="leadhomes" value="one"/>Most leaders share the same home or institution</label></div><span class="hint">ACNA encourages leadership that reflects the breadth of the Network's membership.</span></div></div>
+      <div class="fr s"><div class="f"><label>If there is concentration — how does your Network plan to broaden representation over time?</label><textarea name="leadership_broaden_plan" placeholder="Share your thinking or any steps already underway..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>How are women represented in your Network's leadership?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="genderrep" value="majority"/>Majority of leaders are women</label><label class="chip"><input type="radio" name="genderrep" value="equal"/>Roughly equal representation</label><label class="chip"><input type="radio" name="genderrep" value="minority"/>Women are in the minority</label><label class="chip"><input type="radio" name="genderrep" value="none"/>No women in leadership currently</label></div><span class="hint">ACNA is committed to empowering women and girls to lead. Understanding gender representation helps us support Networks in building truly representative leadership.</span></div></div>
+      <div class="fr s"><div class="f"><label>What does your Network do — or plan to do — to actively support women and girls in leadership roles?</label><textarea name="women_leadership_support" placeholder="e.g. mentorship, reserved leadership positions, targeted capacity building, creating safe spaces for women to lead..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>How does your Network ensure care-experienced people hold real decision-making power — not just advisory or symbolic roles?<span class="req">*</span></label><textarea name="decision_making_power" placeholder="e.g. How are leaders selected? Who holds voting rights? How are care-experienced voices protected in governance?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Are there non-care-experienced people in leadership or governance roles?</label><div class="rg"><label class="chip"><input type="radio" name="nonce" value="yes"/>Yes</label><label class="chip"><input type="radio" name="nonce" value="no"/>No</label></div><span class="hint">Not a disqualifying factor — we simply want to understand the balance.</span></div></div>
+      <div class="fr s"><div class="f"><label>If yes — what roles do they hold, and how does your Network safeguard the primacy of care-experienced leadership?</label><textarea name="non_ce_role_details" placeholder="e.g. advisory board, legal trustee, technical adviser..."></textarea></div></div>
+    </div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-lock"></i></div> Organisational influence &amp; power</div>
+      <div class="why-block"><div class="why-label"><i class="ti ti-bulb"></i> Why independence matters</div><p>ACNA's mission is to create real power, belonging, and opportunity for care-experienced people across the continent — and to ensure our community is protected from exploitation by external actors. To achieve this, member Networks must be genuinely independent. When external organisations hold decision-making positions within care-leaver Networks, they can — even with good intentions — shape agendas, constrain decisions, and redirect priorities away from what care-experienced people themselves need and want. ACNA exists to change that.</p></div>
+      <div class="highlight-band"><div class="hb-label"><i class="ti ti-info-circle"></i> What we are asking</div><p>We need to understand whether any organisation — an NGO, INGO, government body, church, or any other institution — holds a formal position of authority within your Network's leadership or governance that could hamper your Network's ability to make free and independent decisions.</p></div>
+      <div class="fr s"><div class="f"><label>Does any external organisation currently hold a formal decision-making position within your Network's leadership or governance structures?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="orgpower" value="no"/>No — leadership is held entirely by individuals</label><label class="chip"><input type="radio" name="orgpower" value="yes"/>Yes — an organisation holds a formal position</label><label class="chip"><input type="radio" name="orgpower" value="indirect"/>Indirectly — through funding or operational ties</label></div><span class="hint">A formal decision-making position includes: a board seat, voting rights, veto powers, signatory authority, or any structural role that gives an organisation influence over how your Network is run.</span></div></div>
+      <div class="fr s"><div class="f"><label>If yes or indirectly — please name the organisation(s) and describe the nature of their role</label><textarea name="org_role_details" placeholder="Name of the organisation, what position or role they hold, how long this has been in place, and whether there are plans to change it..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>How does your Network protect its agenda and priorities from being shaped by that organisation's interests?</label><textarea name="agenda_protection" placeholder="e.g. term limits, separation of operational and governance roles, care-leaver veto on key decisions..."></textarea><span class="hint">We understand that some Networks began with institutional support. We want to understand the trajectory — where you started, and where decision-making authority is heading.</span></div></div>
+    </div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-sitemap"></i></div> Governance &amp; structure</div>
+      <div class="fr s"><div class="f"><label>Governance and leadership model<span class="req">*</span></label><textarea name="governance_model" placeholder="How is your Network structured and led?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>How does your Network make decisions?<span class="req">*</span></label><textarea name="decision_making_process" placeholder="Describe your decision-making process..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Membership criteria<span class="req">*</span></label><textarea name="membership_criteria" placeholder="Who can join your Network, and how?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Do you have a Constitution?</label><div class="rg"><label class="chip"><input type="radio" name="const" value="yes"/>Yes</label><label class="chip"><input type="radio" name="const" value="no"/>No</label></div><span class="hint">If yes, you'll be asked to attach a copy at the end of the application.</span></div></div>
+    </div>
+    <div class="nav"><button type="button" class="btn btns" onclick="prevPage()"><i class="ti ti-arrow-left"></i> Back</button><div class="pi"><div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div><span>Step 3 of 6</span></div><button type="button" class="btn btnp" onclick="nextPage()">Continue <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+
+  <div class="page" id="page-3">
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-target"></i></div> Mission &amp; values</div>
+      <div class="fr s"><div class="f"><label>Vision and mission statement<span class="req">*</span></label><textarea name="vision_mission" placeholder="What future are you working towards, and how?"></textarea></div></div>
+      <div class="fr"><div class="f"><label>Who does your Network serve?<span class="req">*</span></label><textarea name="network_serves" placeholder="Describe your community..."></textarea></div><div class="f"><label>Key areas of focus<span class="req">*</span></label><textarea name="focus_areas" placeholder="List your key focus areas..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>What is the core problem you are working to solve?<span class="req">*</span></label><textarea name="core_problem" placeholder="What challenge in your community does your Network address?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>What are your organization's values?<span class="req">*</span></label><textarea name="network_values" placeholder="The values that guide everything your Network does..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>What impact have you made so far?</label><textarea name="impact" placeholder="Share outcomes, stories, or milestones from your work..."></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Your Network's position on care reform</label><textarea name="care_reform_position" placeholder="How does your Network engage with care reform conversations?"></textarea></div></div>
+    </div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-accessible"></i></div> Inclusion &amp; diversity</div>
+      <div class="fr s"><div class="f"><label>How does your Network promote inclusion within its membership and activities?<span class="req">*</span></label><textarea name="inclusion_promotion" placeholder="e.g. How do you ensure members from different backgrounds, genders, abilities, or care experiences feel welcomed and have a voice?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Are there groups of care-experienced people your Network currently finds it harder to include, and why?</label><textarea name="hard_to_include_groups" placeholder="Being honest here helps ACNA understand where collective support might be most useful..."></textarea><span class="hint">There are no wrong answers — this helps us learn and grow together.</span></div></div>
+    </div>
+    <div class="nav"><button type="button" class="btn btns" onclick="prevPage()"><i class="ti ti-arrow-left"></i> Back</button><div class="pi"><div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div><span>Step 4 of 6</span></div><button type="button" class="btn btnp" onclick="nextPage()">Continue <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+
+  <div class="page" id="page-4">
+    <div class="trans-block"><h4><i class="ti ti-shield"></i> Why we ask these questions</h4><p>Among ACNA's core commitments is ensuring that care-experienced people are never exploited or spoken for by external actors. These questions help us understand the landscape of each Network's independence, so we can build something that is truly ours — led by us, accountable to us.</p></div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-eye"></i></div> Independence &amp; external affiliations</div>
+      <div class="fr s"><div class="f"><label>Does any leader or executive within your Network hold a paid role, board position, or significant affiliation with an external NGO, INGO, or development organisation?<span class="req">*</span></label><div class="rg"><label class="chip"><input type="radio" name="extaffil" value="yes"/>Yes</label><label class="chip"><input type="radio" name="extaffil" value="no"/>No</label><label class="chip"><input type="radio" name="extaffil" value="unsure"/>Prefer to explain</label></div><span class="hint">This includes organisations working within the care reform sector — child welfare bodies, alternative care advocates, deinstitutionalisation programmes, and similar.</span></div></div>
+      <div class="fr s"><div class="f"><label>If yes — please share details</label><textarea name="external_affiliation_details" placeholder="Name of the organisation, their focus area, the nature of the affiliation, and how your Network maintains its independence..."></textarea></div></div>
+      <div class="complex-band">
+        <div class="cb-top"><strong>A note on care reform organisations specifically.</strong> We recognise that many care-experienced leaders work within or alongside organisations in the care reform sector — and that this shared context can be genuinely valuable. It means common patterns are understood, sector dynamics are familiar, and ACNA is better placed to support partners in engaging with us in ways that are meaningful and informed.</div>
+        <div class="cb-bot">At the same time, we ask about these affiliations because decision-making power held by care reform organisations — however well-intentioned — can still shape a Network's priorities, constrain its independence, and blur the line between care-leaver leadership and professional advocacy. We ask not to judge, but to understand — so we can build together with clarity and trust.</div>
+      </div>
+      <div class="fr s"><div class="f"><label>Does your Network have any specific relationship with organisations working in the care reform sector?</label><div class="rg"><label class="chip"><input type="radio" name="carereform" value="yes"/>Yes</label><label class="chip"><input type="radio" name="carereform" value="no"/>No</label><label class="chip"><input type="radio" name="carereform" value="indirect"/>Indirectly</label></div></div></div>
+      <div class="fr s"><div class="f"><label>If yes — describe the relationship and how your Network navigates it</label><textarea name="care_reform_relationship" placeholder="e.g. shared funding, joint programmes, advisory relationships — and how your Network maintains its own voice and direction..."></textarea><span class="hint">We are not asking you to be isolated from the sector — we are asking you to be transparent about how you navigate it.</span></div></div>
+      <div class="fr s"><div class="f"><label>Does your Network currently receive any form of support from external organisations?</label><div class="rg"><label class="chip"><input type="radio" name="extsupport" value="yes"/>Yes</label><label class="chip"><input type="radio" name="extsupport" value="no"/>No</label></div></div></div>
+      <div class="fr s"><div class="f"><label>If yes — briefly describe the nature of that support</label><textarea name="external_support_nature" placeholder="What kind of support, from whom, and how does your Network maintain decision-making independence?"></textarea><span class="hint">We are not asking you to be donor-free — we are asking you to be transparent.</span></div></div>
+      <div class="fr s"><div class="f"><label>How does your Network ensure it remains led by and accountable to care-experienced people — not external funders or institutions?<span class="req">*</span></label><textarea name="accountability_safeguards" placeholder="Safeguards, structures, or principles that keep your Network independent and community-led..."></textarea></div></div>
+    </div>
+    <div class="nav"><button type="button" class="btn btns" onclick="prevPage()"><i class="ti ti-arrow-left"></i> Back</button><div class="pi"><div class="dots"><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot done"></div><div class="dot active"></div><div class="dot"></div></div><span>Step 5 of 6</span></div><button type="button" class="btn btnp" onclick="nextPage()">Continue <i class="ti ti-arrow-right"></i></button></div>
+  </div>
+
+  <div class="page" id="page-5">
+    <div class="cocreate-band">
+      <div class="cc-label"><i class="ti ti-puzzle"></i> ACNA is built by its members</div>
+      <p>ACNA is not a finished product — it is a <em>living movement, co-created by every Network that joins it</em>. The knowledge you carry, the community you serve, the lessons you have learned, and the challenges you still face — all of this shapes what ACNA becomes. These questions are not just about what you need from us. They are about what we build together.</p>
+    </div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-heart-handshake"></i></div> Your reasons for joining</div>
+      <div class="fr s"><div class="f"><label>Why do you want to join ACNA?</label><textarea name="reason_for_joining" placeholder="What draws your Network to ACNA? What does a continental home mean to you?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>What expertise, skills, or knowledge does your Network's leadership bring to ACNA?<span class="req">*</span></label><textarea name="expertise" placeholder="e.g. legal expertise, community mobilisation, policy advocacy, languages spoken, regional networks..."></textarea><span class="hint">Both professional expertise and the wisdom that comes from lived experience are equally valued here.</span></div></div>
+      <div class="fr s"><div class="f"><label>What is your Network's geographic reach and approximate community size?</label><textarea name="geographic_reach" placeholder="e.g. How many members or care leavers does your Network reach? Which districts, regions, or countries?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Has your Network engaged with any regional or global policy processes before — and if so, what did you learn?</label><textarea name="policy_engagement_experience" placeholder="e.g. government consultations, UN processes, regional bodies, advocacy campaigns — and what those experiences taught you..."></textarea><span class="hint">No prior experience required — this helps ACNA understand how to build collective capacity together.</span></div></div>
+      <div class="fr"><div class="f"><label>What will your Network bring to ACNA as a whole?</label><textarea name="contribution_to_acna" placeholder="Beyond your own Network's needs — what do you contribute to the collective?"></textarea></div><div class="f"><label>What will your Network gain from ACNA?</label><textarea name="gain_from_acna" placeholder="What kind of support, connection, or opportunity are you looking for?"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Are there specific areas where you would like to partner with ACNA to raise resources together?</label><textarea name="resource_partnership_areas" placeholder="e.g. joint funding proposals, shared advocacy campaigns, co-designing programmes..."></textarea><span class="hint">ACNA does not fund Networks individually — but we actively partner with members to pursue resources together.</span></div></div>
+      <div class="fr s"><div class="f"><label>Which regional or global mechanisms is your Network most interested in engaging with collectively through ACNA?</label><div class="rg"><label class="chip"><input type="checkbox" name="mech" value="au"/>African Union</label><label class="chip"><input type="checkbox" name="mech" value="ecowas"/>ECOWAS</label><label class="chip"><input type="checkbox" name="mech" value="sadc"/>SADC</label><label class="chip"><input type="checkbox" name="mech" value="eac"/>EAC</label><label class="chip"><input type="checkbox" name="mech" value="igad"/>IGAD</label><label class="chip"><input type="checkbox" name="mech" value="uncrc"/>UN Committee on the Rights of the Child</label><label class="chip"><input type="checkbox" name="mech" value="unsr"/>UN Special Rapporteurs</label><label class="chip"><input type="checkbox" name="mech" value="sdg"/>SDG Processes</label><label class="chip"><input type="checkbox" name="mech" value="gpev"/>Global Partnership to End Violence</label><label class="chip"><input type="checkbox" name="mech" value="other"/>Other</label></div><span class="hint">Select all that apply.</span></div></div>
+      <div class="fr s"><div class="f"><label>If other — please specify</label><input type="text" name="other_mechanisms_specified" placeholder="Any other mechanisms or processes you'd like ACNA to engage with..."/></div></div>
+    </div>
+    <div class="sc">
+      <div class="sl"><div class="si"><i class="ti ti-id"></i></div> Contact &amp; online presence</div>
+      <div class="fr s"><div class="f"><label>Who will be the primary contact for ACNA engagement?</label><div class="rg"><label class="chip"><input type="radio" name="contact" value="me"/>Myself (the applicant)</label><label class="chip"><input type="radio" name="contact" value="colleague"/>A colleague</label></div></div></div>
+      <div class="fr s"><div class="f"><label>If a colleague — their contact details</label><textarea name="colleague_contact_details" placeholder="Name, email, phone..." style="min-height:60px"></textarea></div></div>
+      <div class="fr s"><div class="f"><label>Does your Network have an online presence?</label><div class="rg"><label class="chip"><input type="radio" name="online" value="yes"/>Yes</label><label class="chip"><input type="radio" name="online" value="no"/>No</label></div></div></div>
+      <div class="fr s"><div class="f"><label>If yes — share your links</label><input type="url" name="online_link_1" placeholder="Website or social media link..." style="margin-bottom:8px"/><input type="url" name="online_link_2" placeholder="Additional link..."/></div></div>
+      <div class="fr s"><div class="f"><label>Attach your Constitution (if you have one)</label><input type="file" name="constitution_file" accept=".pdf,.doc,.docx"/><span class="hint">PDF or Word document. Max 10MB.</span></div></div>
+    </div>
+
+    <div class="auth-block">
+      <div class="auth-header">
+        <div class="auth-icon"><i class="ti ti-writing-sign"></i></div>
+        <div class="auth-title">Board authorisation &amp; applicant declaration<span>This section must be completed before your application can be submitted.</span></div>
+      </div>
+      <div class="declaration-box">
+        <p>ACNA requires that all membership applications are submitted with the knowledge and formal approval of your Network's governing body — whether that is a board of directors, a steering committee, a management committee, or an equivalent decision-making authority. Applications submitted without this approval cannot be accepted, and any membership granted on the basis of an unauthorised application may be withdrawn.</p>
+      </div>
+      <div class="fr"><div class="f"><label>Name of your board chair or equivalent governing authority<span class="req">*</span></label><input type="text" name="board_chair_name" placeholder="Full name"/></div><div class="f"><label>Their email address<span class="req">*</span></label><input type="email" name="board_chair_email" placeholder="board.chair@network.org"/></div></div>
+      <div class="fr s"><div class="f"><label>Their phone number</label><input type="tel" name="board_chair_phone" placeholder="+254 ..."/><span class="hint">ACNA may contact your board chair to verify authorisation. Providing a phone number helps us reach them if needed.</span></div></div>
+      <div class="fr s"><div class="f"><label>Date on which the governing body approved this application<span class="req">*</span></label><input type="date" name="approval_date"/><span class="hint">If approval was given verbally or informally, please note that and provide the approximate date.</span></div></div>
+      <div class="fr s"><div class="f"><label>Any additional context about the approval process</label><textarea name="approval_context" placeholder="e.g. approved at a board meeting, by written resolution, by majority vote..." style="min-height:60px"></textarea></div></div>
+      <label class="declaration-check">
+        <input type="checkbox" id="decl-check" name="declaration_agreed" value="yes" onchange="toggleSubmit()"/>
+        <span>I confirm that I am authorised to submit this application on behalf of this Network, and that our governing body has formally approved this application. I understand that submitting without this approval may result in the application being withdrawn.</span>
+      </label>
+    </div>
+
+    <div class="nav" style="flex-direction:column;align-items:stretch;gap:.75rem">
+      <button type="submit" class="sub-btn" id="submit-btn" disabled>
+        <i class="ti ti-send"></i> Submit Application
+      </button>
+      <button type="button" class="btn btns" onclick="prevPage()" style="align-self:flex-start"><i class="ti ti-arrow-left"></i> Back</button>
+    </div>
+    <p style="font-size:12px;color:var(--ts);text-align:center;margin-top:1rem;line-height:1.6">Your application will be reviewed by the ACNA Management Committee within 6 weeks. All information is held in confidence and used only for membership assessment.</p>
+  </div>
+  </form>
+</div>
+
+<script>
+  let cur=0;
+  document.querySelectorAll('.chip').forEach(c=>{
+    const inp=c.querySelector('input');
+    c.addEventListener('click',function(){
+      if(inp.type==='radio'){
+        document.querySelectorAll('.chip input[name="'+inp.name+'"]').forEach(r=>r.closest('.chip').classList.remove('sel'));
+        this.classList.add('sel');
+      } else {
+        this.classList.toggle('sel');
+        inp.checked=this.classList.contains('sel');
+      }
+    });
+  });
+  function toggleSubmit(){
+    document.getElementById('submit-btn').disabled=!document.getElementById('decl-check').checked;
+  }
+  function goTo(n){
+    document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));
+    document.querySelectorAll('.stab').forEach((t,i)=>{
+      t.classList.remove('active','done');
+      if(i===n)t.classList.add('active');
+      else if(i<n)t.classList.add('done');
+    });
+    cur=n;
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  function nextPage(){if(cur<5)goTo(cur+1);}
+  function prevPage(){if(cur>0)goTo(cur-1);}
+</script>
+</body>
+</html>
