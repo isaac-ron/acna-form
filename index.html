@@ -157,7 +157,49 @@
     display: inline-block;
     opacity: 0.8;
   }
+  .form-letterhead {
+    margin-bottom: 1.5rem;
+    padding-top: 0.5rem;
+  }
+  .hbadge-alt {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--gl);
+    color: var(--gd);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+    border: .5px solid rgba(112,77,54,0.3);
+  }
+  .logo-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+  .logo-title-row .blend-logo {
+    height: 70px;
+    width: auto;
+    mix-blend-mode: multiply;
+    flex-shrink: 0;
+  }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    color: var(--gd);
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
   @media(max-width:520px){
+    .logo-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
     .benefits-grid{grid-template-columns:1fr}
     .benefit-card.full{grid-column:1}
     .value-grid{grid-template-columns:1fr}
@@ -170,12 +212,16 @@
 <body>
 <div class="fs">
   <form action="https://formbold.com/s/obvx8" method="POST" enctype="multipart/form-data">
-  <div class="fh">
-    <div class="logo-wrap">
-      <img src="./IMG_1046.JPG" alt="ACNA Logo" />
+    <div class="form-letterhead">
+    <div class="hbadge-alt"><i class="ti ti-leaf"></i> ACNA - Network Membership Application</div>
+    <div class="logo-title-row">
+      <img src="./IMG_1046.JPG" alt="ACNA Logo" class="blend-logo" />
+      <h1 class="page-title">Association of Care Leavers Networks in Africa</h1>
     </div>
+  </div>
+  <div class="fh">
     <div class="identity-strip">
-      <p>ACNA is not a coalition of organisations that work <em>on behalf of</em> care-experienced people. We are care-experienced people, organising ourselves, defining our own agenda, and building power from within. Every member Network in ACNA is led by the community it serves.</p>
+      <p>ACNA is a collective of care-experienced individuals and Networks across Africa — organising ourselves, defining our own agenda, and building power from within. We are not a coalition of organisations that work on behalf of care-experienced people. We are care-experienced people ourselves. Every member Network in ACNA is led by the community it serves, and every individual member carries a story that this collective is built from.</p>
     </div>
     <p class="sub">Karibu sana! ACNA is a continental movement by and for care leavers across Africa. Our collective strength comes from Networks that are rooted in lived experience, where those who grew up in care hold the authority, set the direction, and own the outcomes.</p>
     <div class="notice"><i class="ti ti-info-circle"></i> <strong>For Networks and Organizations only.</strong> Applications should be made by an executive with decision-making authority and <strong>prior approval from your governing body</strong>. The ACNA Management Committee reviews all applications within <strong>6 weeks</strong>.</div>
